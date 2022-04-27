@@ -1,40 +1,31 @@
 import './App.css';
+import React, {Fragment} from 'react';
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Link
 } from "react-router-dom";
+import Header from './Header';
 
 function App() {
   return (
     <Router>
-      <div className="app">
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/checkout">Check Out</Link>
-            </li>
-          </ul>
-        </nav>
+      <Fragment>
+        <div className="app">
 
-        {/* A <Switch> ---> <Routes> looks through its children <Route>s and
+          {/* A <Switch> ---> <Routes> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
-        <Routes>
-          <Route path="/checkout">
-          </Route>
-          <Route path="/login">
-          </Route>
-          <Route path="/">
-          </Route>
-        </Routes>
-      </div>
+          <Routes>
+            <Route path="/checkout">
+            </Route>
+            <Route path="/login">
+            </Route>
+            {/* <Route exact path='/' element={<PrivateRoute/>}> */}
+            <Route exact path='/' element={<Header/>}/>
+          </Routes>
+        </div>
+      </Fragment>
     </Router>
   );
 }
