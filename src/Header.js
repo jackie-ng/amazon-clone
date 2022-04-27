@@ -1,16 +1,23 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import SearchIcon from '@mui/icons-material/Search';
 import './Header.css';
 
 function Header() {
   return (
     <nav className="header">
       {/* Logo on the left */}
+      <Link to="/">
       <img
       className="header__logo"
-      src="http://media.corporate-ir.net/media_files/IROL/17/176060/Oct18/Amazon%20logo.PNG"
+      src="https://bizmonthly.com/wp-content/uploads/2020/04/amazon-logo-black.png"
       alt="logo" />
-      {/* search box */}
+      </Link>
+      {/* search box + search icon */}
+      <div className="header__search">
+      <input type="text" className="header__searchInput" />
+      <SearchIcon className="header__searchIcon"/>
+      </div>
       {/* 3 links */}
       <ul>
         <li>
