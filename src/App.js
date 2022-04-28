@@ -22,8 +22,7 @@ function App() {
               element={<>
                 <Header />
                 <Checkout /></>} />
-            <Route path="/login" element={<h1>Login</h1>}>
-            </Route>
+            <Route path="/login" element={<h1>Login</h1>}/>
             <Route exact path='/'
               element={
                 <>
