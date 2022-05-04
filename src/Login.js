@@ -12,11 +12,19 @@ function Login() {
     e.preventDefault(); //stop the refresh
     //do the login logic...
     projectAuth.signInWithEmailAndPassword(email, password)
+    .then(auth =>  {
+      //login successfully, redirect to homepage
+
+    }).catch(e => alert(e.message))
   }
 
   const register = e => {
     e.preventDefault(); //stop the refresh
     //do the login logic...
+    projectAuth.createUserWithEmailAndPassword(email, password)
+    .then(auth => {
+      //create user and logged in. Redirect to homepage
+    }).catch(e => alert(e.message))
   }
 
   return (
