@@ -8,6 +8,7 @@ import {
 import Header from './Header';
 import Home from './Home';
 import Checkout from './Checkout';
+import Login from './Login';
 
 function App() {
   return (
@@ -22,7 +23,10 @@ function App() {
               element={<>
                 <Header />
                 <Checkout /></>} />
-            <Route path="/login" element={<h1>Login</h1>}/>
+            <Route path="/login"
+              element={
+                <Login />
+              } />
             <Route exact path='/'
               element={
                 <>
