@@ -5,6 +5,7 @@ import { projectAuth } from "./fbConfig.js";
 
 function Login() {
 
+  const history = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -14,7 +15,7 @@ function Login() {
     projectAuth.signInWithEmailAndPassword(email, password)
     .then(auth =>  {
       //login successfully, redirect to homepage
-
+      history.push("/")
     }).catch(e => alert(e.message))
   }
 
@@ -24,6 +25,7 @@ function Login() {
     projectAuth.createUserWithEmailAndPassword(email, password)
     .then(auth => {
       //create user and logged in. Redirect to homepage
+      history.push("/")
     }).catch(e => alert(e.message))
   }
 

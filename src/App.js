@@ -1,5 +1,5 @@
 import './App.css';
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -9,8 +9,23 @@ import Header from './Header';
 import Home from './Home';
 import Checkout from './Checkout';
 import Login from './Login';
+import { useStateValue } from './StateProvider';
+import { projectAuth } from './fbConfig';
 
 function App() {
+  const [{basket}, dispatch] = useStateValue();
+
+  //a piece of code which runs based on a given condition
+  useEffect(() => {
+    projectAuth.onAuthStateChanged(authUser => {
+      if(authUser) {
+        //the user is logged in
+      } else {
+        //the user is logged out
+      }
+    })
+  }, [])
+
   return (
     <Router>
       <Fragment>
