@@ -17,13 +17,25 @@ function App() {
 
   //a piece of code which runs based on a given condition
   useEffect(() => {
-    projectAuth.onAuthStateChanged(authUser => {
+    const unsubscribe = projectAuth.onAuthStateChanged(authUser => {
       if(authUser) {
         //the user is logged in
+        dispatch({
+          type: "SET_USER",
+          user: authUser
+        })
       } else {
         //the user is logged out
+        dispatch({
+          type: "SET_USER",
+          user: null
+        })
       }
     })
+    return () => {
+      //any cleanup actions go in here
+      unsubscribe();
+    }
   }, [])
 
   return (

@@ -15,6 +15,11 @@ export const initialState = {
 const reducer = (state, action) => {
   console.log(action);
   switch (action.type) {
+    case 'SET_USER':
+      return {
+        ...state,
+        user: action.user
+      }
     case 'ADD_TOO_BASKET':
       //logic foradding item to basket
       return {
