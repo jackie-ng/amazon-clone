@@ -12,8 +12,9 @@ import Login from './Login';
 import { useStateValue } from './StateProvider';
 import { projectAuth } from './fbConfig';
 
+
 function App() {
-  const [{basket}, dispatch] = useStateValue();
+  const [{ user }, dispatch] = useStateValue();
 
   //a piece of code which runs based on a given condition
   useEffect(() => {
@@ -37,6 +38,7 @@ function App() {
       unsubscribe();
     }
   }, [])
+  console.log('user', user);
 
   return (
     <Router>

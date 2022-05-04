@@ -4,13 +4,20 @@ import { Link } from 'react-router-dom';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { useStateValue } from './StateProvider';
+import { projectAuth } from './fbConfig';
 
 function Header() {
   // const [{ basket }] = useStateValue()
   // const [ state, dispatch ] = useStateValue()
 
-  const [{ basket }] = useStateValue();
+  const [{ basket, user }] = useStateValue();
   // console.log(basket)
+
+  const login = () => {
+    if(user) {
+      projectAuth.signOut()
+    }
+  }
   return (
     <nav className="header">
       {/* Logo on the left */}
@@ -28,15 +35,18 @@ function Header() {
       {/* controller header__nav */}
       <div className="header__nav">
         {/* 1st link */}
-        <Link to="/login" className="header__link">
-          <div className="header__option">
-            <span className="header__option1">Hello,</span>
-            <span className="header__option2">Sign In</span>
+        <Link to={!user && "/login"} className="header__link">
+          <div
+          onClick={login}
+          className="header__option">
+            <span className="header__option1">Hello{user ? `, ${user.email}` : ``}!</span>
+            <span className="header__option2">{user ? 'Sign Out' : 'Sign In'}</span>
           </div>
         </Link>
         {/* 2nd link */}
         <Link to="/" className="header__link">
-          <div className="header__option">
+          <div
+          className="header__option">
             <span className="header__option1">Returns</span>
             <span className="header__option2">& Orders</span>
           </div>

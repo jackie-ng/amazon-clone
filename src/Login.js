@@ -15,7 +15,7 @@ function Login() {
     projectAuth.signInWithEmailAndPassword(email, password)
     .then(auth =>  {
       //login successfully, redirect to homepage
-      history.push("/")
+      history("/", { replace: true });
     }).catch(e => alert(e.message))
   }
 
@@ -25,7 +25,7 @@ function Login() {
     projectAuth.createUserWithEmailAndPassword(email, password)
     .then(auth => {
       //create user and logged in. Redirect to homepage
-      history.push("/")
+      history("/", { replace: true });
     }).catch(e => alert(e.message))
   }
 
